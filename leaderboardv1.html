@@ -6,20 +6,32 @@
 	<div class="container">
 		<h1>A Leaderboard App</h1>
 		{{> leaderboard}}
+		{{> addPlayerForm}}
 	</div>
 </body>
 
 
 
-<!-- Templating -->
+<!-- Leaderboard -->
 <template name = "leaderboard">
 	<ul>
 	{{#each player}}
 		<li class="player {{selectedClass}}">{{name}}: {{score}}</li> 
 	{{/each}}
-		<li><input type="button" id="increment" value="+5 Points"></li>
+		<li><input type="button" id="increment" value="Give 5 Points"></li>
+		<input type="button" id="subtract" value="Take 5 Points">
+		<input type="button" id="remove" value="Remove Player">
 		{{#if showSelectedPlayer}}
 			<li>Selected Player: {{showSelectedPlayer.name}}</li>
 		{{/if}}
 	</ul>
+</template>
+
+<!-- Leaderboard -->
+
+<template name="addPlayerForm">
+	<form>
+		<input type="text" id="playerName">
+		<input type="submit" id="Add Player">
+	</form>
 </template>
