@@ -6,7 +6,7 @@ if(Meteor.isClient){
 
 	Template.leaderboard.helpers({
 		'player': function(){
-			return PlayersList.find()
+			return PlayersList.find({}, {sort: {score: -1, name: 1}});
 		},
 
 		'selectedClass': function(){
@@ -15,6 +15,11 @@ if(Meteor.isClient){
 				if(selectedPlayer === playerId){
 					return "selected"
 				}
+		},
+
+		'showSelectedPlayer' : function(){
+			var selectedPlayer = Session.get('selectedPlayer');
+			return PlayersList.findOne(selectedPlayer);
 		}
 	});
 
@@ -24,6 +29,11 @@ if(Meteor.isClient){
 			Session.set('selectedPlayer', playerId);
 			var selectedPlayer = Session.get('selectedPlayer');
 			console.log(selectedPlayer);
+		}, 
+
+		'click #increment': function(){
+			var selectedPlayer = Session.get('selectedPlayer');
+			PlayersList.update({_id: selectedPlayer}, {$inc: {score: 5}});
 		}
 	});
 }

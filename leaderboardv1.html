@@ -17,5 +17,9 @@
 	{{#each player}}
 		<li class="player {{selectedClass}}">{{name}}: {{score}}</li> 
 	{{/each}}
+		<li><input type="button" id="increment" value="+5 Points"></li>
+		{{#if showSelectedPlayer}}
+			<li>Selected Player: {{showSelectedPlayer.name}}</li>
+		{{/if}}
 	</ul>
 </template>
