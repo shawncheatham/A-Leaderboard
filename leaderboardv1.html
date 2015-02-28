@@ -1,0 +1,18 @@
+<head>
+  <title>A Leaderboard App</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>A Leaderboard App</h1>
+    {{> leaderboard}}
+  </div>
+</body>
+
+
+<!-- Templating -->
+<template name = "leaderboard">
+  {{#each player}}
+    <li>{{name}}: {{score}}</li>
+  {{/each}}
+</template>
