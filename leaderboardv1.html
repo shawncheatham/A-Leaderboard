@@ -5,6 +5,7 @@
 <body>
 	<div class="container">
 		<h1>A Leaderboard App</h1>
+		{{> loginButtons}}
 		{{> leaderboard}}
 		{{> addPlayerForm}}
 	</div>
@@ -30,8 +31,10 @@
 <!-- Leaderboard -->
 
 <template name="addPlayerForm">
+	{{#if currentUser}}
 	<form>
 		<input type="text" id="playerName">
-		<input type="submit" id="Add Player">
+		<input type="submit" value="Add Player">
 	</form>
+	{{/if}}
 </template>
