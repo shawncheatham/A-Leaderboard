@@ -58,9 +58,10 @@ if(Meteor.isClient){
 
 	// Add Player to list for given User
 	Template.addPlayerForm.events({
-		'submit form': function(event, template){
+		'submit form': function(event){
 			event.preventDefault();
-			var playerNameVar = template.find('#playerName').value;
+			var playerNameVar = event.target.playerName.value;
+			console.log(playerNameVar);
 			Meteor.call('insertPlayerData', playerNameVar);
 		}
 	});
